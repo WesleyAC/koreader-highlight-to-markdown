@@ -1,0 +1,12 @@
+[package]
+name = "koreader-highlight-to-markdown"
+version = "0.0.0"
+edition = "2021"
+
+[[bin]]
+name = "koreader-highlight-to-markdown"
+path = "main.rs"
+
+[dependencies]
+mlua = { version = "0.6", features = ["lua53", "vendored"] }
+chrono = "0.4.19"
