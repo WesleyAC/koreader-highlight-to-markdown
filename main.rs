@@ -11,11 +11,9 @@ fn main() {
     let lua = mlua::Lua::new();
     let result: mlua::Table = lua.load(&contents).eval().unwrap();
 
-    let title: String = result
-        .get::<&str, mlua::Table>("doc_props")
-        .unwrap()
-        .get("title")
-        .unwrap();
+    let stats: mlua::Table = result.get("stats").unwrap();
+    let title: String = stats.get("title").unwrap();
+    let authors: String = stats.get("authors").unwrap();
 
     let mut bookmarks = vec![];
 
@@ -43,7 +41,7 @@ fn main() {
 
     bookmarks.sort_by(|a, b| a.datetime.partial_cmp(&b.datetime).unwrap());
 
-    println!("# {} - highlights\n", title);
+    println!("# {} ({}) - highlights\n", title, authors);
     for bookmark in bookmarks {
         println!(
             "## {} @ {}\n\n> {}\n\n",
