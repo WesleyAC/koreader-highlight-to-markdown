@@ -2,10 +2,11 @@
 
 quick 'n dirty script to convert [koreader](https://koreader.rocks/) highlights to a markdown file.
 
-to compile:
+to compile/install:
 
 ```
 $ cargo build --release
+$ cp target/release/koreader-highlight-to-markdown ~/.local/bin/ # adjust to taste
 ```
 
 to use:
